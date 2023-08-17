@@ -13,7 +13,7 @@ def stub_view(request, *args, **kwargs):
     return HttpResponse(body, content_type="text/plain")
 
 def list_view(request):
-    context = {'posts': Post.objects.all()}
+    context = {'posts': Post.objects.filter(published_date__isnull=False)}
     return render(request, 'blogging/list.html', context)
 
 def detail_view(request, post_id):
