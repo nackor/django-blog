@@ -11,7 +11,5 @@ class CategoryInLine(admin.TabularInline):
 class PostAdmin(admin.ModelAdmin):
     inlines = [CategoryInLine,]
 
-
-
 admin.site.register(Post,PostAdmin)
 admin.site.register(Category, CategoryAdmin) 
