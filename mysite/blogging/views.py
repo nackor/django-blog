@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
+from blogging.models import Post
 
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
@@ -12,5 +13,5 @@ def stub_view(request, *args, **kwargs):
     return HttpResponse(body, content_type="text/plain")
 
 def list_view(request):
-    context = {'polls': Poll.objects.all()}
-    return render(request, 'polling/list.html', context)
+    context = {'blogs': Post.objects.all()}
+    return render(request, 'blogging/list.html', context)
