@@ -6,7 +6,7 @@ class CategoryAdmin(admin.ModelAdmin):
     exclude = ('posts',)
 
 class CategoryInLine(admin.TabularInline):
-    model = Category
+    model = Category.posts.through
 
 class PostAdmin(admin.ModelAdmin):
     inlines = [CategoryInLine,]
