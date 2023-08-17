@@ -1,3 +1,4 @@
+from django import http
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from blogging.models import Post
@@ -23,6 +24,8 @@ def list_view(request):
 def detail_view(request, post_id):
     try:
         post = Post.objects.get(pk=post_id)
+        if(post.published_date == None):
+            raise Http404
     except Post.DoesNotExist:
         raise Http404
 
