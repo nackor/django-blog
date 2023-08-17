@@ -47,7 +47,7 @@ class FrontEndTestCase(TestCase):
         resp_text = resp.content.decode(resp.charset)
         self.assertTrue("Recent Posts" in resp_text)
         for count in range(1, 11):
-            title = "Post %d Title" % count
+            title = "Post %d" % count
             if count < 6:
                 self.assertContains(resp, title, count=1)
             else:
