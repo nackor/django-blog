@@ -6,11 +6,12 @@ class CategoryAdmin(admin.ModelAdmin):
     exclude = ('posts',)
 
 class CategoryInLine(admin.TabularInline):
-    pass
+    model = Category
+
 class PostAdmin(admin.ModelAdmin):
-    pass
+    inlines = [CategoryInLine,]
 
 
 
-admin.site.register(Post)
+admin.site.register(Post,PostAdmin)
 admin.site.register(Category, CategoryAdmin) 
