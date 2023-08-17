@@ -5,7 +5,7 @@ from blogging.models import Post, Category
 admin.site.register(Post)
 
 class CategoryAdmin(admin.ModelAdmin):
-    exclude = ('posts')
+    exclude = ('posts',)
 
 
-admin.site.register(Category)   
+admin.site.register(Category, CategoryAdmin) 
