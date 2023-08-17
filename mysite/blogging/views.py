@@ -13,5 +13,5 @@ def stub_view(request, *args, **kwargs):
     return HttpResponse(body, content_type="text/plain")
 
 def list_view(request):
-    context = {'blogs': Post.objects.all()}
+    context = {'posts': Post.objects.all()}
     return render(request, 'blogging/list.html', context)
