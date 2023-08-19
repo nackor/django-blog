@@ -401,3 +401,4 @@ djangoenv/*
 *.pyc
 *.db
 *.sqlite3
+django-blog.sln
