@@ -5,4 +5,4 @@ install:
   - pip install -r ./mysite/requirements.txt
   - python ./mysite/manage.py migrate
 script:
-  - python ./mysite/manage.py test
+  - python ./mysite/manage.py test blogging
