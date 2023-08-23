@@ -5,4 +5,5 @@ install:
   - pip install -r ./mysite/requirements.txt
   - python ./mysite/manage.py migrate
 script:
+  - black --check blogging polling mysite
   - python ./mysite/manage.py test blogging
