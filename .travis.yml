@@ -2,7 +2,7 @@ language: python
 python:
   - "3.6"
 install:
-  - pip install -r requirements.txt
-  - python manage.py migrate
+  - pip install -r ./mysite/requirements.txt
+  - python ./mysite/manage.py migrate
 script:
-  - python manage.py test
+  - python ./mysite/manage.py test
