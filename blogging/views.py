@@ -23,13 +23,15 @@ class BlogDetailView(DetailView):
     )
 
 def add_post(request):
-        post_form = PostForm(request.POST)
+        post = Post(author=request.user)
+        post_form = PostForm(request.POST,instance=post)
         if post_form.is_valid():
             post_form.save()
             return HttpResponseRedirect("/")
         else:
             post_form = PostForm()
         return render(request,"blogging/add.html",{"form":post_form})
+
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
     if args:
