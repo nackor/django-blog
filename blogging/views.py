@@ -5,7 +5,8 @@ from blogging.models import Post
 from blogging.forms import PostForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-
+from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 class BlogListView(ListView):
     model = Post
@@ -22,6 +23,7 @@ class BlogDetailView(DetailView):
         "-published_date"
     )
 
+@login_required(login_url='/login/')
 def add_post(request):
         post = Post(author=request.user)
         post_form = PostForm(request.POST,instance=post)
@@ -29,7 +31,7 @@ def add_post(request):
             post_form.save()
             return HttpResponseRedirect("/")
         else:
-            post_form = PostForm()
+            post_form = PostForm(initial={'published_date':datetime.now()})
         return render(request,"blogging/add.html",{"form":post_form})
 
 def stub_view(request, *args, **kwargs):
