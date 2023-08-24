@@ -21,19 +21,15 @@ class BlogDetailView(DetailView):
     queryset = Post.objects.exclude(published_date__isnull=True).order_by(
         "-published_date"
     )
-    def post(self, request, *args, **kwargs):
-        post_form = self.PostForm(request.POST)
-        if post_form.is_valid():
-            post_form.save()
-        
-
-        context = {"object": post_form}
-        return render(request, "polling/detail.html", context)
 
 def add_post(request):
-        post_form = self.PostForm(request.POST)
+        post_form = PostForm(request.POST)
         if post_form.is_valid():
             post_form.save()
+            return HttpResponseRedirect("/")
+        else:
+            post_form = PostForm()
+        return render(request,"blogging/add.html",{"form":post_form})
 def stub_view(request, *args, **kwargs):
     body = "Stub View\n\n"
     if args:
